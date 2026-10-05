@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bảo tàng Di sản số – Toán 7</title>
+<meta name="description" content="Học liệu tương tác GDCD 7 – Bài 5: Bảo tồn di sản văn hoá, gắn với di sản Hải Phòng. GV Ngô Thị Phương, THCS Võ Thị Sáu, Hải Phòng.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&family=Lexend:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&display=swap');
+:root{--bg:#f8efdf;--panel:#fffaf1;--ink:#3a1c12;--dim:#7a5c4a;--line:#e8cfa9;--acc:#a4161a;--accdk:#6b0d10;--acc2:#c9a227;--onacc:#fff;--gold:#b98300;--gold2:#7a5600;--goldbg:#fff1cc;--soft:#f3e3c8;--note:#fff7ea;--inbg:#fff;
+--okbg:#e7f4e4;--okc:#1f6b2a;--warnbg:#fde8dc;--warnc:#9a2f0b;--infobg:#f4ead8;--infoc:#5a3a10;--shadow:0 3px 16px rgba(58,28,18,.09);--certbg:radial-gradient(circle at 50% 0,#fff8e6,#f6e3bd);--certink:#3a1c12;--certacc:#a4161a}
+body{background:radial-gradient(circle at 100% 0,rgba(164,22,26,.10),transparent 40%),radial-gradient(circle at 0 100%,rgba(201,162,39,.16),transparent 45%),var(--bg)}
+h1,.hero h2,.cert h2,.cert .ct{font-family:'Playfair Display',Georgia,serif!important;letter-spacing:0}
+.logo,.room .t{border-color:var(--acc2)!important;background:linear-gradient(135deg,#a4161a,#6b0d10)!important;color:#ffe7a3!important}
+.chip{border-color:var(--acc)}
+
+*{box-sizing:border-box}[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'Be Vietnam Pro',system-ui,sans-serif}
+.app{max-width:1140px;margin:0 auto;padding:18px 16px 26px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{flex:0 0 66px;height:66px;border:2px solid var(--acc);border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:4px 9px;color:var(--acc);background:var(--panel)}
+.logo small{font:700 11px 'JetBrains Mono',monospace}.logo b{font:800 21px/1.1 'Lexend',sans-serif;white-space:nowrap}
+h1{margin:0;font:800 clamp(26px,5vw,46px)/1.08 'Lexend',sans-serif;letter-spacing:-.015em}
+.sub{font:600 12px 'JetBrains Mono',monospace;letter-spacing:.08em;color:var(--dim);margin-top:5px;text-transform:uppercase}
+.hud{display:flex;gap:8px}
+.hbtn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font:600 14px 'JetBrains Mono',monospace;cursor:pointer}
+.hbtn b{color:var(--gold);font-size:17px}
+.rooms{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 22px}
+.rooms button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:8px 14px;font:700 14px 'Be Vietnam Pro',sans-serif;cursor:pointer;display:flex;gap:7px;align-items:center}
+.rooms button .n{font:600 12px 'JetBrains Mono',monospace;color:var(--dim)}
+.rooms button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.rooms button.on .n{color:inherit;opacity:.7}
+.chip{display:inline-block;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);border-radius:999px;padding:3px 11px;background:var(--panel)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center}
+.hero h2{font:800 clamp(26px,4.3vw,42px)/1.15 'Lexend',sans-serif;margin:12px 0;letter-spacing:-.01em}
+.hero p{color:var(--dim)}
+.quote{border-left:4px solid var(--gold);padding:2px 12px;color:var(--gold2);font-size:18px;margin:12px 0}
+.hub{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:24px}
+.room{display:flex;gap:14px;text-align:left;cursor:pointer;color:var(--ink);font:inherit;transition:transform .15s,border-color .15s}
+.room:hover{border-color:var(--acc);transform:translateY(-2px)}
+.room .t,.tile{flex:0 0 64px;height:64px;border:2px solid var(--acc);border-radius:12px;display:flex;flex-direction:column;justify-content:center;padding:4px 8px;color:var(--acc)}
+.room .t small{font:700 11px 'JetBrains Mono',monospace}.room .t b{font:800 18px/1.1 'Lexend',sans-serif;white-space:nowrap}
+.room h3{margin:0;font:700 20px/1.25 'Lexend',sans-serif}.room p{margin:3px 0 5px;color:var(--dim);font-size:14px}
+.room .st{font:700 13px 'JetBrains Mono',monospace;color:var(--gold)}
+.rhead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.coach{display:flex;gap:10px;align-items:center;flex:1 1 380px}
+.coach .av{font-size:36px;line-height:1;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.coach .say{background:var(--panel);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:8px 13px;font-size:15px;flex:1}
+.act{margin-bottom:16px}
+.act h3{margin:0 0 4px;font:700 21px/1.3 'Lexend',sans-serif;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.bpill{font:700 12px 'JetBrains Mono',monospace;border:1px dashed var(--line);color:var(--dim);border-radius:999px;padding:2px 9px}
+.bpill.got{border:1px solid var(--gold);color:var(--gold2);background:var(--goldbg)}
+.dim{color:var(--dim)}.small{font-size:14px}
+.tnote{border:1px dashed var(--line);border-radius:14px;padding:10px 14px;margin-top:14px;background:var(--note);font-size:15px}
+.tnote summary{cursor:pointer;font-weight:800;color:var(--acc)}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.center{justify-content:center}
+.btn{border:none;border-radius:13px;padding:11px 18px;font:800 16px 'Be Vietnam Pro',sans-serif;cursor:pointer;transition:transform .1s}
+.btn:active{transform:scale(.96)}
+.btn.main{background:var(--acc);color:var(--onacc);box-shadow:0 4px 0 var(--accdk)}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn.line{background:transparent;border:2px solid var(--line);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:default}
+.msg{border-radius:13px;padding:10px 14px;margin-top:12px;font-size:15.5px}
+.msg.ok{background:var(--okbg);color:var(--okc)}.msg.warn{background:var(--warnbg);color:var(--warnc)}.msg.info{background:var(--infobg);color:var(--infoc)}
+.prog{height:9px;background:var(--soft);border-radius:99px;overflow:hidden;margin:10px 0 2px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));width:0;transition:width .35s}
+.fx{display:inline-flex;align-items:center;gap:2px;vertical-align:middle}
+.fr{display:inline-flex;flex-direction:column;text-align:center;line-height:1.05;vertical-align:middle}
+.fr b{font-weight:inherit;padding:0 3px}.fr b:first-child{border-bottom:.09em solid currentColor}
+.numin{width:84px;font:800 20px 'Be Vietnam Pro',sans-serif;text-align:center;padding:8px;border:2px solid var(--line);border-radius:12px;background:var(--inbg);color:var(--ink)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+.opt{border:2px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:12px 14px;font:700 17px 'Be Vietnam Pro',sans-serif;cursor:pointer;text-align:left}
+.opt:hover{border-color:var(--acc)}
+.opt.right{border-color:#16a34a;background:var(--okbg);color:var(--okc)}.opt.wrong{border-color:#dc2626;background:var(--warnbg);color:var(--warnc)}
+.big{font:800 34px 'Be Vietnam Pro',sans-serif;color:var(--acc)}
+svg{display:block;width:100%;height:auto;user-select:none;-webkit-user-select:none}
+.shake{animation:sh .35s}@keyframes sh{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.pop{animation:pp .5s}@keyframes pp{40%{transform:scale(1.15)}}
+/* quiz */
+.quiz{max-width:820px;margin:0 auto}
+.qtop{display:flex;justify-content:space-between;font:700 14px 'JetBrains Mono',monospace;color:var(--dim)}
+.qbar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin:8px 0 14px}.qbar i{display:block;height:100%;background:var(--gold);transition:width 1s linear}
+.qq{font:700 22px/1.4 'Lexend',sans-serif;margin:6px 0 10px}
+.cert{text-align:center;border:4px double var(--gold);border-radius:22px;padding:26px 18px;background:var(--certbg);color:var(--certink)}
+.cert .m{font:700 13px 'JetBrains Mono',monospace;letter-spacing:.2em}
+.cert h2{font:800 30px 'Lexend',sans-serif;margin:10px 0 2px;letter-spacing:.04em}
+.cert .ct{font:800 22px 'Lexend',sans-serif;color:var(--certacc)}
+.cert .who{font:900 30px 'Be Vietnam Pro',sans-serif;border-bottom:2px dashed var(--gold);display:inline-block;min-width:240px;padding:0 12px;margin:8px 0}
+.cert input{font:700 17px 'Be Vietnam Pro',sans-serif;padding:9px 12px;border:2px solid var(--line);border-radius:12px;max-width:100%;background:#fff;color:#1b2440}
+table.info{width:100%;border-collapse:collapse;font-size:15px}
+table.info th{text-align:left;vertical-align:top;padding:9px 12px 9px 0;border-bottom:1px solid var(--line);width:28%;color:var(--acc)}
+table.info td{padding:9px 0;border-bottom:1px solid var(--line)}
+footer{text-align:center;color:var(--dim);font-size:13px;padding:6px 16px 30px}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:9998}
+#toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-200%);background:var(--ink);color:var(--bg);padding:11px 20px;border-radius:999px;font-weight:800;z-index:9999;transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.25);max-width:92vw;text-align:center}
+#toast.show{transform:translate(-50%,0)}#toast:empty{display:none}
+.hscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.swipe{display:none;text-align:center;font-size:12.5px;color:var(--dim)}
+@media(max-width:820px){.hero,.grid2{grid-template-columns:1fr}}
+@media(max-width:600px){.app{padding:14px 12px}.rooms button{padding:7px 11px;font-size:13px}.panel{padding:14px}.logo{flex-basis:56px;height:56px}.swipe{display:block}.hscroll svg{min-width:640px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.qbig{font:800 21px/1.4 'Lexend',sans-serif;margin:10px 0}
+.exhibit{display:flex;gap:16px;align-items:center;justify-content:center;background:linear-gradient(135deg,#fff,#fbefd8);border:2px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;min-height:130px}
+.exhibit .e{font-size:58px;line-height:1}.exhibit .n{font:800 23px/1.3 'Lexend',sans-serif}.exhibit .d{color:var(--dim);font-size:14.5px}
+.cases{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
+.case{border:2px solid var(--line);border-radius:16px;background:var(--panel);padding:12px;cursor:pointer;text-align:left;font:inherit;color:var(--ink);min-height:110px;display:flex;flex-direction:column;gap:6px}
+.case:hover{border-color:var(--acc)}
+.case b{font:800 16px 'Lexend',sans-serif;color:var(--acc)}
+.case .got{display:flex;flex-wrap:wrap;gap:4px}.case .got span{font-size:12.5px;background:var(--soft);border-radius:999px;padding:2px 8px}
+.case.flash{animation:fl .6s}@keyframes fl{40%{background:#e7f4e4;border-color:#1f6b2a}}
+.case.bad{animation:bd .6s}@keyframes bd{40%{background:#fde8dc;border-color:#9a2f0b}}
+/* bản đồ di sản */
+.stops{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+.stop{border:2px solid var(--line);border-radius:16px;background:var(--panel);padding:12px 8px;cursor:pointer;text-align:center;font:700 14.5px/1.3 'Be Vietnam Pro',sans-serif;color:var(--ink);position:relative}
+.stop .e{font-size:38px;display:block}.stop.on{border-color:var(--acc);box-shadow:0 4px 0 var(--acc)}
+.stop.done:after{content:"✔";position:absolute;top:6px;right:8px;color:#fff;background:#1f6b2a;border-radius:50%;width:22px;height:22px;font-size:13px;display:flex;align-items:center;justify-content:center}
+.card2{border:2px solid var(--line);border-radius:18px;padding:16px;background:linear-gradient(135deg,#fffaf1,#fbecd0);margin-top:12px}
+.card2 h4{margin:0 0 6px;font:800 20px 'Lexend',sans-serif;color:var(--acc)}
+.passport{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;padding:12px;border:2px dashed var(--acc2);border-radius:16px;background:#fff8e8}
+.stamp{width:62px;height:62px;border-radius:50%;border:3px dashed #d8c3a0;display:flex;align-items:center;justify-content:center;font-size:28px;opacity:.35;transform:rotate(-8deg)}
+.stamp.got{opacity:1;border:3px solid var(--acc);background:#fff;animation:pp .5s}
+/* đồng tình */
+.yn{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}.yn .opt{min-width:200px;text-align:center}
+.quote2{font:700 21px/1.45 'Lexend',sans-serif;background:var(--note);border-left:6px solid var(--acc2);border-radius:12px;padding:14px 16px;margin:12px 0}
+.scene{display:flex;gap:14px;align-items:center;background:var(--note);border:1px solid var(--line);border-radius:16px;padding:14px;margin:12px 0}
+.scene .e{font-size:50px;line-height:1}.scene p{margin:0;font:700 18.5px/1.45 'Be Vietnam Pro',sans-serif}
+/* cam kết */
+.pl{display:grid;gap:8px;margin-top:10px}
+.pl label{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--panel);cursor:pointer;font-size:15.5px}
+.pl input{width:20px;height:20px;margin-top:2px;accent-color:var(--acc)}
+.amb{border-radius:22px;padding:22px;background:linear-gradient(145deg,#a4161a,#5c0b0e);color:#ffefc4;position:relative;overflow:hidden;margin-top:14px}
+.amb:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;border:14px double rgba(255,215,120,.25)}
+.amb h4{margin:0;font:900 26px 'Playfair Display',serif;color:#ffd770}.amb .nm{font:900 28px 'Be Vietnam Pro',sans-serif;margin:8px 0;color:#fff}
+.amb ul{margin:8px 0 0;padding-left:20px}.amb li{margin:3px 0}
+.amb small{opacity:.8}
+.textin{width:100%;font:600 16px 'Be Vietnam Pro',sans-serif;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+
+</style>
+</head>
+<body>
+<canvas id="cf"></canvas><div id="toast" role="status" aria-live="polite"></div>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo"><small>BÀI 5</small><b>DS</b></div><div><h1>Bảo tàng Di sản số</h1><div class="sub">Giáo dục công dân 7 · Bài 5 · Bảo tồn di sản văn hoá · Học liệu tương tác và mô phỏng</div></div></div>
+  <div class="hud"><button class="hbtn" id="snd" aria-label="Bật/tắt âm thanh">🔊</button><div class="hbtn">Huy hiệu <b id="bc">0</b>/<span id="bt">0</span></div></div>
+</header>
+<nav class="rooms" id="nav" aria-label="Các phòng học"></nav>
+
+<section class="view" id="v-hub">
+  <div class="hero">
+    <div><span class="chip">Phòng chờ</span><h2>Một ngôi chùa trăm năm, một làn điệu dân ca, một lễ hội chọi trâu… Đâu là di sản văn hoá?</h2>
+<div class="quote">Gợi ý: có di sản em chạm tay vào được, có di sản em chỉ có thể nghe, xem và gìn giữ bằng trí nhớ.</div>
+<p>Cùng Hướng dẫn viên Di sản đi qua 5 phòng của bảo tàng số: phân loại di sản, du hành di sản Hải Phòng quê em, tìm hiểu ý nghĩa, làm thám tử pháp luật và kí cam kết giữ gìn di sản. Hoàn thành nhiệm vụ để nhận huy hiệu và giấy chứng nhận Đại sứ di sản nhí.</p>
+</div>
+    <div class="panel" style="text-align:center">
+<svg id="heroSvg" viewBox="0 0 420 420" aria-label="Họa tiết mặt trống đồng xoay chậm"></svg>
+<div id="heroCap" style="font:800 19px 'Lexend',sans-serif;min-height:56px;margin-top:6px"></div>
+</div>
+  </div>
+  <div class="hub" id="hubRooms"></div>
+</section>
+
+<!-- R1 PHÂN LOẠI -->
+<section class="view" id="v-r1" hidden>
+  <div class="panel act">
+    <h3>Xếp hiện vật vào đúng phòng trưng bày <span class="bpill" data-badge="sort"></span></h3>
+    <div class="dim"><b>Di sản văn hoá</b> là sản phẩm tinh thần, vật chất có giá trị lịch sử, văn hoá, khoa học, được lưu truyền từ thế hệ này qua thế hệ khác. Mỗi "hiện vật" dưới đây thuộc phòng nào? Đúng 8/10 để nhận huy hiệu.</div>
+    <div class="prog"><i id="so-p"></i></div><div class="dim small" id="so-c"></div>
+    <div class="exhibit"><span class="e" id="so-e"></span><div><div class="n" id="so-n"></div><div class="d" id="so-d"></div></div></div>
+    <div class="cases">
+      <button class="case" data-k="vt"><b>🏛️ Di sản văn hoá vật thể</b><span class="small dim">sản phẩm vật chất: di tích, danh lam thắng cảnh, di vật, cổ vật, bảo vật quốc gia</span><div class="got" id="so-vt"></div></button>
+      <button class="case" data-k="pvt"><b>🎶 Di sản văn hoá phi vật thể</b><span class="small dim">sản phẩm tinh thần: lễ hội, dân ca, nghệ thuật trình diễn, tri thức dân gian…</span><div class="got" id="so-pvt"></div></button>
+      <button class="case" data-k="no"><b>🚫 Chưa phải di sản</b><span class="small dim">chưa được lưu truyền qua các thế hệ</span><div class="got" id="so-no"></div></button>
+    </div>
+    <div id="so-f"></div><div class="row"><button class="btn ghost" id="so-nx">Hiện vật tiếp ➜</button></div>
+  </div>
+  <div class="panel act">
+    <h3>Di tích, danh thắng hay bảo vật? <span class="bpill" data-badge="type"></span></h3>
+    <div class="dim">Di sản văn hoá vật thể gồm: <b>di tích lịch sử – văn hoá</b>, <b>danh lam thắng cảnh</b>, <b>di vật, cổ vật, bảo vật quốc gia</b>. Chọn đúng loại cho từng di sản. Đúng 6/8 để nhận huy hiệu.</div>
+    <div class="prog"><i id="ty-p"></i></div><div class="dim small" id="ty-c"></div>
+    <div class="exhibit"><span class="e" id="ty-e"></span><div><div class="n" id="ty-n"></div><div class="d" id="ty-d"></div></div></div>
+    <div class="opts" id="ty-o"><button class="opt" data-k="dt">🏯 Di tích lịch sử – văn hoá</button><button class="opt" data-k="dl">🏞️ Danh lam thắng cảnh</button><button class="opt" data-k="bv">🏺 Di vật, cổ vật, bảo vật quốc gia</button></div>
+    <div id="ty-f"></div><div class="row"><button class="btn ghost" id="ty-nx">Di sản tiếp ➜</button></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở mục 1. Khái niệm di sản văn hoá và một số loại di sản văn hoá của Việt Nam. Trước khi bấm, cho học sinh giải thích vì sao chọn: di sản vật thể "chạm vào được", di sản phi vật thể là sản phẩm tinh thần được lưu truyền bằng truyền miệng, truyền nghề, trình diễn. Hai "hiện vật" chưa phải di sản giúp học sinh hiểu tiêu chí "lưu truyền qua các thế hệ". Có thể mở rộng: yêu cầu học sinh kể thêm di sản ở địa phương mình.</details>
+</section>
+
+<!-- R2 HẢI PHÒNG -->
+<section class="view" id="v-r2" hidden>
+  <div class="panel act">
+    <h3>Du hành di sản Hải Phòng quê em <span class="bpill" data-badge="map"></span></h3>
+    <div class="dim">Chọn từng điểm đến, đọc thông tin rồi trả lời câu hỏi để nhận dấu vào <b>Hộ chiếu di sản</b>. Đủ 5 dấu để nhận huy hiệu.</div>
+    <div class="stops" id="hp-stops"></div>
+    <div class="card2" id="hp-card"><span class="dim">👆 Chọn một điểm đến để bắt đầu hành trình.</span></div>
+    <div class="passport"><b style="margin-right:6px">🛂 Hộ chiếu di sản:</b><div id="hp-pass" style="display:flex;gap:8px;flex-wrap:wrap"></div></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở phần Khám phá hoặc Vận dụng, gắn bài học với địa phương. Thông tin lấy từ các nguồn chính thống: Vịnh Hạ Long – Quần đảo Cát Bà được UNESCO công nhận Di sản thiên nhiên thế giới ngày 16/9/2023; Quần thể di tích và danh thắng Yên Tử – Vĩnh Nghiêm – Côn Sơn, Kiếp Bạc được công nhận Di sản văn hoá thế giới ngày 12/7/2025; Lễ hội chọi trâu Đồ Sơn là Di sản văn hoá phi vật thể quốc gia (2012); Khu di tích lịch sử Bạch Đằng Giang được xếp hạng di tích quốc gia (đón bằng ngày 2/1/2021); bộ kim phẩm Đền Nghè được công nhận Bảo vật quốc gia năm 2024. Giao nhiệm vụ nhóm: mỗi nhóm làm một bài giới thiệu ngắn về một điểm đến.</details>
+</section>
+
+<!-- R3 Ý NGHĨA -->
+<section class="view" id="v-r3" hidden>
+  <div class="panel act">
+    <h3>Vì sao phải giữ gìn di sản? <span class="bpill" data-badge="value"></span></h3>
+    <div class="dim">Em đồng tình hay không đồng tình với mỗi ý kiến sau? Đúng 5/6 để nhận huy hiệu.</div>
+    <div class="prog"><i id="va-p"></i></div><div class="dim small" id="va-c"></div>
+    <div class="quote2" id="va-q"></div>
+    <div class="yn"><button class="opt" data-k="1">👍 Đồng tình</button><button class="opt" data-k="0">👎 Không đồng tình</button></div>
+    <div id="va-f"></div><div class="row"><button class="btn ghost" id="va-nx">Ý kiến tiếp ➜</button></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở mục 2. Ý nghĩa của di sản văn hoá đối với con người và xã hội. Sau mỗi ý kiến, mời học sinh nêu lí do trước khi xem nhận xét. Chốt: di sản văn hoá là tài sản của dân tộc, thể hiện truyền thống và công lao dựng nước, giữ nước của cha ông; giúp các thế hệ sau hiểu về cội nguồn; góp phần phát triển kinh tế, du lịch, giáo dục và giao lưu văn hoá.</details>
+</section>
+
+<!-- R4 PHÁP LUẬT -->
+<section class="view" id="v-r4" hidden>
+  <div class="panel act">
+    <h3>Thám tử bảo vệ di sản <span class="bpill" data-badge="law"></span></h3>
+    <div class="dim">Mỗi tình huống là việc làm <b>đúng quy định</b> hay <b>vi phạm pháp luật</b> về bảo vệ di sản văn hoá? Đúng 7/8 để nhận huy hiệu.</div>
+    <div class="prog"><i id="lw-p"></i></div><div class="dim small" id="lw-c"></div>
+    <div class="scene"><span class="e" id="lw-e"></span><p id="lw-q"></p></div>
+    <div class="yn"><button class="opt" data-k="1">✅ Đúng quy định</button><button class="opt" data-k="0">⛔ Vi phạm</button></div>
+    <div id="lw-f"></div><div class="row"><button class="btn ghost" id="lw-nx">Tình huống tiếp ➜</button></div>
+  </div>
+  <div class="panel act">
+    <h3>Nếu là em, em sẽ làm gì? <span class="bpill" data-badge="act"></span></h3>
+    <div class="dim">Chọn cách ứng xử phù hợp với lứa tuổi. Đúng 3/4 để nhận huy hiệu.</div>
+    <div class="prog"><i id="ac-p"></i></div><div class="dim small" id="ac-c"></div>
+    <div class="scene"><span class="e" id="ac-e"></span><p id="ac-q"></p></div>
+    <div class="opts" id="ac-o"></div><div id="ac-f"></div><div class="row"><button class="btn ghost" id="ac-nx">Tình huống tiếp ➜</button></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở mục 3. Quy định của pháp luật về quyền và nghĩa vụ của tổ chức, cá nhân đối với di sản văn hoá. Tổ chức, cá nhân có quyền sở hữu hợp pháp di sản văn hoá, tham quan, nghiên cứu di sản; có nghĩa vụ tôn trọng, bảo vệ và phát huy giá trị di sản, thông báo kịp thời cho cơ quan nhà nước khi phát hiện di vật, cổ vật, ngăn chặn hoặc đề nghị xử lí hành vi vi phạm. Nghiêm cấm chiếm đoạt, huỷ hoại, xâm hại di sản; đào bới trái phép địa điểm khảo cổ; lấn chiếm đất di tích; mua bán, vận chuyển trái phép di vật, cổ vật; lợi dụng di sản để trục lợi, hoạt động mê tín. Lưu ý: SGK dẫn Luật Di sản văn hoá năm 2001 (sửa đổi 2009); từ ngày 1/7/2025, Luật Di sản văn hoá năm 2024 có hiệu lực và vẫn giữ các nhóm quy định trên. Nhấn mạnh với học sinh: khi thấy vi phạm, hãy báo người lớn, thầy cô hoặc chính quyền địa phương, không tự xử lí.</details>
+</section>
+
+<!-- R5 CAM KẾT -->
+<section class="view" id="v-r5" hidden>
+  <div class="panel act">
+    <h3>Thẻ Đại sứ di sản của em <span class="bpill" data-badge="pledge"></span></h3>
+    <div class="dim">Chọn ít nhất <b>3 việc</b> em sẽ làm để góp phần bảo vệ di sản văn hoá, có thể viết thêm việc của riêng em, rồi bấm Tạo thẻ.</div>
+    <div class="pl" id="pg-list"></div>
+    <div class="row"><input class="textin" id="pg-own" maxlength="90" placeholder="Việc của riêng em (không bắt buộc)"></div>
+    <div class="row"><input class="textin" id="pg-name" maxlength="40" placeholder="Tên và lớp của em" style="max-width:320px"><button class="btn main" id="pg-go">🏮 Tạo thẻ Đại sứ</button></div>
+    <div id="pg-f"></div>
+    <div id="pg-card"></div>
+  </div>
+  <details class="tnote"><summary>Gợi ý cho giáo viên</summary>Dùng ở phần Vận dụng, cuối tiết hoặc giao về nhà. Học sinh chụp thẻ Đại sứ di sản nộp qua nhóm lớp; giáo viên có thể tổng hợp các việc làm được chọn nhiều nhất để xây dựng kế hoạch hoạt động trải nghiệm của lớp (ví dụ: dọn vệ sinh, tìm hiểu, giới thiệu một di tích gần trường).</details>
+</section>
+
+
+<section class="view" id="v-r6" hidden>
+  <div class="quiz" id="quiz"></div>
+  <details class="tnote" style="max-width:820px;margin:14px auto 0"><summary>Gợi ý cho giáo viên</summary>Dùng ở phần Luyện tập hoặc củng cố cuối tiết, mỗi câu 30 giây. Đạt từ 6/8 câu nhận giấy chứng nhận Đại sứ di sản nhí. Có thể kết hợp với thẻ Đại sứ di sản ở phòng 05 làm sản phẩm học tập.</details>
+</section>
+
+<section class="view" id="v-info" hidden>
+  <div class="panel" style="max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:14px">
+    <span class="chip" style="align-self:flex-start">Thông tin học liệu (theo Công văn 5158/SGDĐT-GDTrH)</span>
+    <h2 style="font:800 28px 'Lexend',sans-serif;margin:0">Bảo tàng Di sản số – Học liệu tương tác và mô phỏng</h2>
+    <div style="overflow-x:auto"><table class="info" id="infoT"></table></div>
+  </div>
+</section>
+</div>
+<footer>Học liệu số Giáo dục công dân 7 · Ngô Thị Phương – Trường THCS Võ Thị Sáu, phường An Biên, Hải Phòng · Giáo viên đồng sáng tạo cùng AI</footer>
+<script>
+/* ====== KHUNG CHUNG (dùng cho các học liệu Toán 7) ====== */
+const $=id=>document.getElementById(id),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a||1}
+function simp(f){const g=gcd(f.n,f.d);let n=f.n/g,d=f.d/g;if(d<0){n=-n;d=-d}return{n,d}}
+function parse(s){s=String(s).replace(/−/g,'-').replace(',','.').trim();
+  if(s.includes(' ')){const[w,fr]=s.split(' ');const[a,b]=fr.split('/').map(Number),W=Number(w);return simp({n:(Math.abs(W)*b+a)*(W<0?-1:1),d:b})}
+  if(s.includes('/')){const[a,b]=s.split('/').map(Number);return{n:a,d:b}}
+  const p=s.split('.');if(p.length===1)return{n:Number(s),d:1};
+  const d=Math.pow(10,p[1].length);return simp({n:Math.round(Number(s)*d),d})}
+function val(s){const f=parse(s);return f.n/f.d}
+function pretty(s){return String(s).replace(/-/g,'−')}
+function F(s){s=String(s);const neg=s[0]==='-',b=neg?s.slice(1):s;
+  if(b.includes(' ')){const[w,fr]=b.split(' ');const[n,d]=fr.split('/');return `<span class="fx">${neg?'−':''}${w}<span class="fr"><b>${n}</b><b>${d}</b></span></span>`}
+  if(b.includes('/')){const[n,d]=b.split('/');return `<span class="fx">${neg?'−':''}<span class="fr"><b>${n}</b><b>${d}</b></span></span>`}
+  return (neg?'−':'')+b}
+function fs(n,d){return (n<0?'−':'')+Math.abs(n)+(d===1?'':'/'+d)}
+function factors(n){const f=[];let d=2;n=Math.abs(n);while(n>1){while(n%d===0){f.push(d);n/=d}d++}return f}
+function decimal(a,b){const sign=(a<0)!==(b<0)&&a!==0?'-':'';a=Math.abs(a);b=Math.abs(b);
+  const int=Math.floor(a/b);let r=a%b;const seen={},digits=[],steps=[];let cs=-1;
+  while(r!==0&&digits.length<260){if(seen[r]!==undefined){cs=seen[r];break}seen[r]=digits.length;const q=Math.floor(r*10/b),nr=(r*10)%b;steps.push({r,q,nr});digits.push(q);r=nr}
+  const pre=cs<0?digits.join(''):digits.slice(0,cs).join(''),cyc=cs<0?'':digits.slice(cs).join('');
+  return{sign,int,pre,cyc,steps,repR:r}}
+function fmtD(d){return (d.sign?'−':'')+d.int+(d.pre||d.cyc?','+d.pre+(d.cyc?'('+d.cyc+')':''):'')}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+/* âm thanh */
+let AC=null,soundOn=true;try{soundOn=localStorage.getItem('vts-snd')!=='0'}catch(e){}
+function beep(f,d,type,v,w){if(!soundOn)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
+  const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+(w||0);o.type=type||'sine';o.frequency.value=f;
+  g.gain.setValueAtTime(v||.08,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.03)}catch(e){}}
+const sfx={ok(){beep(660,.14);beep(990,.22,'sine',.08,.11)},bad(){beep(190,.28,'square',.035)},tap(){beep(540,.07,'triangle',.06)},
+  flip(){beep(420,.05,'triangle',.04)},tick(){beep(880,.03,'square',.02)},win(){[523,659,784,1047].forEach((f,i)=>beep(f,.3,'sine',.08,i*.13))}};
+
+/* pháo giấy + thông báo */
+let cv,cx,parts=[],raf=0;
+function confetti(n){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;cv=cv||$('cf');cx=cx||cv.getContext('2d');cv.width=innerWidth;cv.height=innerHeight;
+  const cols=['#fbbf24','#f43f5e','#3b82f6','#22c55e','#ec4899','#14b8a6','#a78bfa'];
+  for(let i=0;i<(n||70);i++)parts.push({x:innerWidth/2+(Math.random()-.5)*240,y:innerHeight*.35,vx:(Math.random()-.5)*13,vy:-Math.random()*12-4,r:Math.random()*6+4,c:cols[i%7],a:Math.random()*6,l:95});
+  if(!raf)tick()}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.45;p.a+=.2;p.l--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);cx.restore()});
+  parts=parts.filter(p=>p.l>0&&p.y<cv.height+20);raf=parts.length?requestAnimationFrame(tick):(cx.clearRect(0,0,cv.width,cv.height),0)}
+let toastT=0;function toast(t){const e=$('toast');e.innerHTML=t;e.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove('show'),2600)}
+
+/* trạng thái, huy hiệu */
+const ST={b:{},name:''};
+function loadST(){try{const o=JSON.parse(localStorage.getItem(L.key)||'{}');ST.b=o.b||{};ST.name=o.name||''}catch(e){}}
+function saveST(){try{localStorage.setItem(L.key,JSON.stringify(ST))}catch(e){}}
+function award(k){if(ST.b[k])return false;ST.b[k]=1;saveST();sfx.win();confetti(110);toast('🏅 Huy hiệu mới: '+L.badges[k]);counts();return true}
+function counts(){const n=Object.keys(L.badges).filter(k=>ST.b[k]).length;$('bc').textContent=n;$('bt').textContent=Object.keys(L.badges).length;
+  $$('.bpill').forEach(p=>{const k=p.dataset.badge;p.classList.toggle('got',!!ST.b[k]);p.textContent=(ST.b[k]?'🏅 ':'○ ')+L.badges[k]});
+  $$('#hubRooms .room').forEach(b=>{const r=L.rooms.find(x=>x[0]===b.dataset.go);b.querySelector('.st').textContent='★ '+r[5].filter(k=>ST.b[k]).length+'/'+r[5].length})}
+function say(t){const v=$$('.view').find(x=>!x.hidden);const s=v&&v.querySelector('.say');if(s)s.innerHTML='<b>'+L.coach+':</b> '+t}
+function msg(id,t,cls){$(id).innerHTML=t?`<div class="msg ${cls||'info'}">${t}</div>`:''}
+function prog(p,i,n,s){$(p+'-p').style.width=(i/n*100)+'%';$(p+'-c').textContent='Câu '+Math.min(i+1,n)+'/'+n+' · Đúng ngay lần đầu: '+s}
+const STOP=[];function stopAll(){STOP.forEach(f=>{try{f()}catch(e){}})}
+function go(v){if(!$('v-'+v))v='hub';stopAll();$$('.view').forEach(x=>x.hidden=x.id!=='v-'+v);$$('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.go===v));
+  if(L.intro&&L.intro[v])say(L.intro[v]);if(v===L.quizRoom)qIntro();if(L.onEnter)L.onEnter(v);
+  try{history.replaceState(null,'','#'+v)}catch(e){}window.scrollTo(0,0)}
+
+/* thử thách tính giờ + giấy chứng nhận */
+let qi=0,qs=0,qt=null,tl=30,qLock=false,QS=[];
+STOP.push(()=>clearInterval(qt));
+function qIntro(){clearInterval(qt);$('quiz').innerHTML=`<div class="panel" style="text-align:center"><span class="chip">${L.quiz.length} câu · mỗi câu 30 giây</span>
+  <h2 style="font:800 30px 'Lexend',sans-serif;margin:12px 0 6px">${L.quizTitle}</h2><p class="dim">Đúng từ ${L.quizPass}/${L.quiz.length} câu trở lên để nhận giấy chứng nhận <b>${L.certTitle}</b>.</p>
+  <div class="row center"><input id="qName" class="numin" style="width:280px;font-size:17px;text-align:left" maxlength="40" placeholder="Tên và lớp của em" value="${(ST.name||'').replace(/"/g,'&quot;')}"></div>
+  <div class="row center"><button class="btn main" id="qGo">▶ Bắt đầu thử thách</button></div><p class="dim small">Tên chỉ lưu trên máy của em, không gửi đi đâu.</p></div>`;
+  $('qGo').onclick=()=>{ST.name=$('qName').value.trim();saveST();QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()}}
+function qRender(){clearInterval(qt);const el=$('quiz');
+  if(qi>=QS.length){const pass=qs>=L.quizPass;if(pass)award('quiz');
+    const n=Object.keys(L.badges).filter(k=>ST.b[k]).length,N=Object.keys(L.badges).length;
+    el.innerHTML=pass?`<div class="cert"><div class="m">${L.certTop}</div><h2>GIẤY CHỨNG NHẬN</h2><div class="ct">${L.certTitle}</div><div style="margin-top:10px">Trao cho</div>
+      <div class="who" id="certWho">${ST.name||'. . . . . . . .'}</div><div>đã hoàn thành ${L.certWhat} với <b>${qs}/${QS.length}</b> câu đúng và đạt <b>${n}/${N}</b> huy hiệu.</div>
+      <div class="small" style="margin-top:6px;opacity:.8">Ngày ${new Date().toLocaleDateString('vi-VN')} · GV hướng dẫn: Ngô Thị Phương – Trường THCS Võ Thị Sáu, Hải Phòng</div>
+      <div class="row center"><input id="cName" maxlength="40" placeholder="Sửa tên của em" value="${(ST.name||'').replace(/"/g,'&quot;')}"></div>
+      <div class="small" style="margin-top:6px">📸 Chụp màn hình giấy chứng nhận gửi cô nhé!</div></div><div class="row center"><button class="btn ghost" id="qAgain">↻ Làm lại thử thách</button></div>`
+     :`<div class="panel" style="text-align:center"><h2 style="font:800 30px 'Lexend',sans-serif">${qs}/${QS.length} câu đúng</h2><p>Cần ${L.quizPass}/${QS.length} câu để nhận giấy chứng nhận. Em ôn lại các phòng rồi thử lại nhé!</p><div class="row center"><button class="btn main" id="qAgain">↻ Làm lại</button></div></div>`;
+    if(pass){confetti(160);$('cName').oninput=e=>{ST.name=e.target.value.trim();saveST();$('certWho').textContent=ST.name||'. . . . . . . .'}}
+    $('qAgain').onclick=()=>{QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()};return}
+  const q=QS[qi];tl=30;qLock=false;
+  el.innerHTML=`<div class="panel"><div class="qtop"><span>Câu ${qi+1}/${QS.length}</span><span>Đúng: ${qs}</span><span id="qTime">⏱ 30 giây</span></div><div class="qbar"><i id="qBar" style="width:100%"></i></div>
+    <div class="qq">${q.q}</div><div class="opts" id="qOpts">${q.ord.map(i=>`<button class="opt" data-i="${i}">${q.o[i]}</button>`).join('')}</div><div id="qFb"></div>
+    <div class="row"><button class="btn main" id="qNext" hidden>Câu tiếp ➜</button></div></div>`;
+  $$('#qOpts .opt').forEach(b=>b.onclick=()=>qAns(+b.dataset.i));$('qNext').onclick=()=>{qi++;qRender()};
+  qt=setInterval(()=>{tl--;$('qTime').textContent='⏱ '+tl+' giây';$('qBar').style.width=(tl/30*100)+'%';if(tl<=5&&tl>0)sfx.tick();if(tl<=0)qAns(-1)},1000)}
+function qAns(i){if(qLock)return;qLock=true;clearInterval(qt);const q=QS[qi],ok=i===q.a;if(ok){qs++;sfx.ok()}else sfx.bad();
+  $$('#qOpts .opt').forEach(b=>{const k=+b.dataset.i;if(k===q.a)b.classList.add('right');else if(k===i)b.classList.add('wrong');b.disabled=true});
+  msg('qFb',(i<0?'⏰ Hết giờ! ':ok?'✅ Chính xác! ':'💭 Chưa đúng. ')+(q.e||''),ok?'ok':'warn');$('qNext').hidden=false;$('qNext').textContent=qi<QS.length-1?'Câu tiếp ➜':'Xem kết quả ➜'}
+
+/* khởi động */
+function boot(){loadST();
+  $('snd').textContent=soundOn?'🔊':'🔇';$('snd').onclick=()=>{soundOn=!soundOn;$('snd').textContent=soundOn?'🔊':'🔇';try{localStorage.setItem('vts-snd',soundOn?'1':'0')}catch(e){}};
+  $('nav').innerHTML=[['hub','00','Phòng chờ'],...L.rooms.map(r=>[r[0],r[3],r[1]]),['info','ⓘ','Thông tin học liệu']].map(r=>`<button data-go="${r[0]}"><span class="n">${r[1]}</span>${r[2]}</button>`).join('');
+  $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  $('hubRooms').innerHTML=L.rooms.map(r=>`<button class="panel room" data-go="${r[0]}"><span class="t"><small>${r[3]}</small><b>${r[4]}</b></span><span><h3>${r[1]}</h3><p>${r[2]}</p><span class="st"></span></span></button>`).join('');
+  $$('#hubRooms .room').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  L.rooms.forEach(r=>{const s=$('v-'+r[0]);if(s)s.insertAdjacentHTML('afterbegin',`<div class="rhead"><span class="chip">Phòng ${r[3]} · ${r[1]}</span><div class="coach"><span class="av">${L.avatar}</span><div class="say"></div></div></div>`)});
+  $('infoT').innerHTML=L.info.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('');
+  counts();if(L.hero)L.hero();
+  const h=location.hash.slice(1);go($('v-'+h)?h:'hub')}
+
+/* ====== GDCD 7 · BÀI 5: BẢO TỒN DI SẢN VĂN HOÁ ====== */
+const L={key:'vts-gdcd7-b5',coach:'Hướng dẫn viên Di sản',avatar:'🏮',
+ rooms:[['r1','Phòng trưng bày: di sản là gì?','Xếp hiện vật vào phòng vật thể, phi vật thể; phân biệt di tích, danh thắng, bảo vật quốc gia.','01','DS',['sort','type']],
+  ['r2','Du hành di sản Hải Phòng','5 điểm đến quê em: Hạ Long – Cát Bà, Côn Sơn – Kiếp Bạc, chọi trâu Đồ Sơn, Bạch Đằng Giang, Đền Nghè.','02','HP',['map']],
+  ['r3','Vì sao phải giữ gìn?','Đồng tình hay không đồng tình: ý nghĩa của di sản văn hoá với con người và xã hội.','03','♥',['value']],
+  ['r4','Thám tử bảo vệ di sản','Phát hiện hành vi vi phạm pháp luật; chọn cách ứng xử phù hợp lứa tuổi.','04','⚖',['law','act']],
+  ['r5','Thẻ Đại sứ di sản','Chọn việc làm cụ thể, tạo thẻ cam kết bảo vệ di sản của riêng em.','05','✦',['pledge']],
+  ['r6','Thử thách & chứng nhận','8 câu hỏi tính giờ, nhận giấy chứng nhận Đại sứ di sản nhí.','06','★',['quiz']]],
+ badges:{sort:'Người trưng bày',type:'Chuyên gia phân loại',map:'Hộ chiếu Hải Phòng',value:'Người hiểu giá trị',law:'Thám tử pháp luật',act:'Ứng xử văn minh',pledge:'Đại sứ cam kết',quiz:'Đại sứ di sản nhí'},
+ quizRoom:'r6',quizPass:6,quizTitle:'Thử thách Đại sứ di sản nhí',certTitle:'Đại sứ di sản nhí',certTop:'BẢO TÀNG DI SẢN SỐ · GDCD 7 · BÀI 5',certWhat:'thử thách về bảo tồn di sản văn hoá',
+ intro:{r1:'Chào em! Mình là Hướng dẫn viên Di sản. Hãy giúp bảo tàng xếp các "hiện vật" vào đúng phòng nhé!',
+  r2:'Hải Phòng quê mình có di sản thế giới, bảo vật quốc gia và cả lễ hội nổi tiếng. Lên đường thôi!',
+  r3:'Di sản không chỉ là đồ cũ. Em nghĩ di sản có ý nghĩa gì với chúng ta?',
+  r4:'Thám tử nhí vào việc! Nhớ: thấy vi phạm thì báo người lớn hoặc chính quyền, không tự xử lí nhé.',
+  r5:'Bảo vệ di sản bắt đầu từ những việc nhỏ. Em chọn làm việc gì?',
+  r6:'Thử thách cuối cùng! 8 câu, mỗi câu 30 giây. Cố lên Đại sứ nhí!'},
+ quiz:[
+  {q:'Di sản văn hoá là:',o:['sản phẩm tinh thần, vật chất có giá trị lịch sử, văn hoá, khoa học, được lưu truyền từ thế hệ này qua thế hệ khác','mọi đồ vật cũ có trong gia đình','các công trình hiện đại mới xây dựng','chỉ những gì được UNESCO công nhận'],a:0,e:'Đây là khái niệm di sản văn hoá trong SGK.'},
+  {q:'Di sản nào sau đây là di sản văn hoá <b>phi vật thể</b>?',o:['Nhã nhạc cung đình Huế','Vịnh Hạ Long','Trống đồng Ngọc Lũ','Hoàng thành Thăng Long'],a:0,e:'Nhã nhạc là sản phẩm tinh thần, được lưu truyền bằng trình diễn.'},
+  {q:'Di sản văn hoá vật thể bao gồm:',o:['di tích lịch sử – văn hoá, danh lam thắng cảnh, di vật, cổ vật, bảo vật quốc gia','lễ hội, dân ca, nghề thủ công truyền thống','tiếng nói, chữ viết, tri thức dân gian','tập quán xã hội, tín ngưỡng'],a:0,e:'Các phương án còn lại là di sản văn hoá phi vật thể.'},
+  {q:'Lễ hội chọi trâu Đồ Sơn (Hải Phòng) được công nhận là:',o:['Di sản văn hoá phi vật thể quốc gia','Bảo vật quốc gia','Danh lam thắng cảnh','Di sản thiên nhiên thế giới'],a:0,e:'Năm 2012, lễ hội được công nhận là Di sản văn hoá phi vật thể quốc gia.'},
+  {q:'Hành vi nào <b>vi phạm</b> pháp luật về bảo vệ di sản văn hoá?',o:['Đào bới trái phép địa điểm khảo cổ để tìm cổ vật','Tham quan bảo tàng cùng gia đình','Tìm hiểu lịch sử một ngôi đền','Hát dân ca trong buổi sinh hoạt lớp'],a:0,e:'Đào bới trái phép địa điểm khảo cổ là hành vi bị nghiêm cấm.'},
+  {q:'Khi đào móng nhà phát hiện cổ vật, gia đình cần:',o:['báo ngay cho cơ quan nhà nước có thẩm quyền','bán lại cho người sưu tầm','giữ làm của riêng, không cho ai biết','đập ra xem bên trong có gì'],a:0,e:'Thông báo kịp thời khi phát hiện di vật, cổ vật là nghĩa vụ của công dân.'},
+  {q:'Ý nghĩa của di sản văn hoá là:',o:['thể hiện truyền thống, công lao dựng nước và giữ nước của cha ông','chỉ để trang trí cho đẹp','chỉ có giá trị với người cao tuổi','không còn giá trị trong thời hiện đại'],a:0,e:'Di sản giúp các thế hệ hiểu cội nguồn và tự hào về dân tộc.'},
+  {q:'Việc làm nào phù hợp với học sinh để bảo vệ di sản?',o:['Tìm hiểu, giới thiệu di sản quê hương; giữ vệ sinh khi tham quan','Khắc tên lên di tích để làm kỉ niệm','Mang hiện vật nhỏ ở di tích về nhà làm kỉ niệm','Bỏ qua khi thấy người khác xâm hại di tích'],a:0,e:'Đây là những việc vừa sức, thiết thực với học sinh lớp 7.'}],
+ info:[['Tên học liệu','Bảo tàng Di sản số'],['Loại học liệu','Học liệu tương tác và mô phỏng (mục II.2.3)'],['Môn học, lớp','Giáo dục công dân 7 – bộ sách Kết nối tri thức với cuộc sống'],['Bài học','Bài 5. Bảo tồn di sản văn hoá'],
+  ['Yêu cầu cần đạt','Nêu được khái niệm di sản văn hoá và một số loại di sản văn hoá của Việt Nam. Giải thích được ý nghĩa của di sản văn hoá đối với con người và xã hội. Nêu được quy định cơ bản của pháp luật về quyền và nghĩa vụ của tổ chức, cá nhân đối với việc bảo vệ di sản văn hoá. Liệt kê được các hành vi vi phạm pháp luật về bảo vệ di sản văn hoá và cách đấu tranh, ngăn chặn các hành vi đó. Thực hiện được một số việc cần làm phù hợp với lứa tuổi để góp phần bảo vệ di sản văn hoá.'],
+  ['Mục đích, đối tượng','Giáo viên dùng trong hoạt động khám phá, luyện tập, vận dụng; học sinh lớp 7 tự học, tự kiểm tra. Dùng được trong dạy học trực tiếp, trực tuyến, kết hợp và trong hoạt động giáo dục địa phương.'],
+  ['Hướng dẫn khai thác','Chọn phòng trên thanh điều hướng. Mỗi phòng có mục "Gợi ý cho giáo viên". Nút 🤖 mở trợ giảng AI chỉ gợi ý, không làm hộ. Chạy trên trình duyệt (máy tính, điện thoại, máy tính bảng), không cần cài đặt, không cần đăng nhập; trợ giảng AI cần kết nối Internet.'],
+  ['Tác giả','Ngô Thị Phương – Trường THCS Võ Thị Sáu, phường An Biên, thành phố Hải Phòng'],
+  ['Nguồn tài liệu','SGK Giáo dục công dân 7 (Kết nối tri thức với cuộc sống), Bài 5. Luật Di sản văn hoá năm 2001 (sửa đổi 2009) như SGK dẫn và Luật Di sản văn hoá năm 2024 (hiệu lực từ 1/7/2025). Thông tin di sản Hải Phòng đối chiếu với báo chí chính thống: Báo Đầu tư (UNESCO công nhận Vịnh Hạ Long – Quần đảo Cát Bà, 16/9/2023), Tạp chí Luật sư Việt Nam (Quần thể Yên Tử – Vĩnh Nghiêm – Côn Sơn, Kiếp Bạc, 12/7/2025; bộ kim phẩm Đền Nghè là Bảo vật quốc gia năm 2024), Báo Nông nghiệp và Môi trường (Lễ hội chọi trâu Đồ Sơn, 2012), Báo Tuổi Trẻ (Khu di tích Bạch Đằng Giang, 2021).'],
+  ['Bản quyền','Hình vẽ, mô phỏng, âm thanh do tác giả tạo bằng mã; không dùng hình ảnh của bên thứ ba. Phông chữ Playfair Display, Lexend, Be Vietnam Pro, JetBrains Mono (giấy phép SIL OFL). Cho phép sử dụng, chỉnh sửa cho mục đích giáo dục, ghi rõ nguồn.'],
+  ['Sử dụng trí tuệ nhân tạo','Có dùng trợ lý AI Claude (Anthropic) hỗ trợ thiết kế, viết mã; trợ giảng AI dùng Gemini (Google) với lời nhắc sư phạm do tác giả soạn. Tác giả đã kiểm tra, xác minh nội dung và chịu trách nhiệm về tính chính xác.'],
+  ['An toàn thông tin','Không thu thập, không gửi dữ liệu cá nhân; tên trên giấy chứng nhận, thẻ Đại sứ và huy hiệu chỉ lưu trên thiết bị của người dùng.'],['Phiên bản','1.0 – tháng 10/2026']],
+ hero:heroG5};
+
+/* ---------- PHÒNG CHỜ: mặt trống đồng ---------- */
+function heroG5(){const C=210;let h=`<defs><radialGradient id="dr" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#d6a648"/><stop offset="1" stop-color="#8a5a1a"/></radialGradient></defs>
+  <circle cx="${C}" cy="${C}" r="200" fill="url(#dr)" stroke="#5c3a0e" stroke-width="4"/><g id="drum" style="transform-origin:${C}px ${C}px">`;
+  const ring=(r,w)=>`<circle cx="${C}" cy="${C}" r="${r}" fill="none" stroke="#5c3a0e" stroke-width="${w||2}"/>`;
+  [190,172,150,118,92,62,40].forEach(r=>h+=ring(r));
+  for(let k=0;k<72;k++){const a=k*5*Math.PI/180;h+=`<line x1="${C+172*Math.cos(a)}" y1="${C+172*Math.sin(a)}" x2="${C+190*Math.cos(a)}" y2="${C+190*Math.sin(a)}" stroke="#5c3a0e" stroke-width="1.6"/>`}
+  for(let k=0;k<40;k++){const a=k*9*Math.PI/180,r=100;h+=`<circle cx="${C+r*Math.cos(a)}" cy="${C+r*Math.sin(a)}" r="3.2" fill="#5c3a0e"/>`}
+  for(let k=0;k<10;k++){const a=k*36*Math.PI/180,r=134,x=C+r*Math.cos(a),y=C+r*Math.sin(a),deg=k*36+90;
+    h+=`<g transform="translate(${x} ${y}) rotate(${deg})"><path d="M-16 4 Q-4 -6 0 -2 Q6 -12 18 -10 Q8 -4 4 2 Q0 8 -16 4Z" fill="#5c3a0e"/><path d="M0 -2 L-3 -14" stroke="#5c3a0e" stroke-width="2"/></g>`}
+  let star='';for(let k=0;k<28;k++){const a=k*Math.PI/14-Math.PI/2,r=k%2?13:38;star+=`${C+r*Math.cos(a)},${C+r*Math.sin(a)} `}
+  h+=`<polygon points="${star}" fill="#ffe08a" stroke="#5c3a0e" stroke-width="1.5"/></g>`;$('heroSvg').innerHTML=h;
+  const D=[['🏝️ Vịnh Hạ Long – Quần đảo Cát Bà','Di sản thiên nhiên thế giới (UNESCO, 2023)'],['⛩️ Yên Tử – Vĩnh Nghiêm – Côn Sơn, Kiếp Bạc','Di sản văn hoá thế giới (UNESCO, 2025)'],['🐃 Lễ hội chọi trâu Đồ Sơn','Di sản văn hoá phi vật thể quốc gia (2012)'],['🏺 Bộ kim phẩm Đền Nghè','Bảo vật quốc gia (2024)'],['🥁 Trống đồng Ngọc Lũ','Bảo vật quốc gia'],['🎼 Nhã nhạc cung đình Huế','Di sản văn hoá phi vật thể của nhân loại']];
+  let i=0,ang=0;const show=()=>{$('heroCap').innerHTML=`${D[i][0]}<br><span style="color:var(--acc);font-size:15px">${D[i][1]}</span>`;i=(i+1)%D.length};show();setInterval(()=>{if(!$('v-hub').hidden)show()},2800);
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;(function spin(){if(!reduce&&!$('v-hub').hidden){ang=(ang+.12)%360;const g=$('drum');if(g)g.style.transform=`rotate(${ang}deg)`}requestAnimationFrame(spin)})()}
+
+/* tiện ích chọn đáp án dạng nút */
+function markOpts(sel,right,picked,attr){$$(sel).forEach(x=>{const k=x.dataset[attr||'k'];x.classList.remove('right','wrong');if(k===right)x.classList.add('right');else if(x===picked)x.classList.add('wrong')})}
+function clearOpts(sel){$$(sel).forEach(x=>x.classList.remove('right','wrong'))}
+
+/* ---------- R1a XẾP PHÒNG TRƯNG BÀY ---------- */
+(function(){const T=[['🏯','Hoàng thành Thăng Long','Khu di tích ở Hà Nội, di sản văn hoá thế giới','vt'],['🎼','Nhã nhạc cung đình Huế','Âm nhạc cung đình triều Nguyễn','pvt'],['🥁','Trống đồng Ngọc Lũ','Hiện vật bằng đồng thời Đông Sơn','vt'],['🐃','Lễ hội chọi trâu Đồ Sơn','Lễ hội truyền thống ở Hải Phòng, ngày 9 tháng 8 âm lịch','pvt'],
+  ['🏢','Toà chung cư vừa xây xong năm ngoái','Công trình hiện đại, mới hoàn thành','no'],['🎤','Dân ca Quan họ Bắc Ninh','Lối hát đối đáp giữa liền anh, liền chị','pvt'],['🏝️','Vịnh Hạ Long – Quần đảo Cát Bà','Danh lam thắng cảnh nổi tiếng','vt'],['🎮','Một trò chơi điện tử vừa ra mắt','Sản phẩm giải trí mới phát hành','no'],
+  ['⛩️','Đền Kiếp Bạc (Hải Phòng)','Đền thờ Hưng Đạo Đại vương Trần Quốc Tuấn','vt'],['🃏','Nghệ thuật Bài Chòi','Loại hình nghệ thuật trình diễn dân gian ở miền Trung','pvt']];
+  const W={vt:'là sản phẩm vật chất, chạm vào được → <b>di sản văn hoá vật thể</b>.',pvt:'là sản phẩm tinh thần, được lưu truyền bằng truyền miệng, trình diễn, thực hành → <b>di sản văn hoá phi vật thể</b>.',no:'chỉ vừa mới có, chưa được lưu truyền qua các thế hệ → <b>chưa phải di sản văn hoá</b>.'};
+  let i=0,s=0,done=false;
+  function load(){done=false;const t=T[i];$('so-e').textContent=t[0];$('so-n').textContent=t[1];$('so-d').textContent=t[2];msg('so-f','');prog('so',i,T.length,s);if(i===0)['vt','pvt','no'].forEach(k=>$('so-'+k).innerHTML='')}
+  $$('#v-r1 .case').forEach(b=>b.onclick=()=>{if(done)return;done=true;const t=T[i],ok=b.dataset.k===t[3];if(ok){s++;sfx.ok()}else sfx.bad();
+    const tg=$$('#v-r1 .case').find(x=>x.dataset.k===t[3]);tg.classList.remove('flash','bad');void tg.offsetWidth;tg.classList.add('flash');if(!ok){b.classList.remove('bad');void b.offsetWidth;b.classList.add('bad')}
+    $('so-'+t[3]).insertAdjacentHTML('beforeend',`<span>${t[0]} ${t[1].split(' (')[0]}</span>`);
+    msg('so-f',(ok?'✅ Đúng phòng! ':'💭 Chưa đúng. ')+`${t[1]} ${W[t[3]]}`,ok?'ok':'warn');say(ok?'Hiện vật đã vào đúng tủ trưng bày!':'Hỏi thử: mình có chạm tay vào được không? Nó đã có từ bao lâu?');prog('so',i+1,T.length,s)});
+  $('so-nx').onclick=()=>{if(!done){msg('so-f','Em chọn một phòng trưng bày trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=8;msg('so-f',p?'🎉 Em xếp đúng '+s+'/10 hiện vật!':'Em xếp đúng '+s+'/10. Cần 8/10 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('sort');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__so={get k(){return T[i][3]}};load()})();
+
+/* ---------- R1b DI TÍCH, DANH THẮNG HAY BẢO VẬT ---------- */
+(function(){const T=[['🏯','Hoàng thành Thăng Long','Khu di tích ở Hà Nội','dt','gắn với lịch sử kinh đô Thăng Long → <b>di tích lịch sử – văn hoá</b>.'],
+  ['🏝️','Vịnh Hạ Long – Quần đảo Cát Bà','Vùng biển đảo đá vôi kì vĩ','dl','là cảnh quan thiên nhiên có giá trị thẩm mĩ, khoa học → <b>danh lam thắng cảnh</b>.'],
+  ['🥁','Trống đồng Ngọc Lũ','Hiện vật thời Đông Sơn','bv','là hiện vật quý hiếm, đặc biệt có giá trị → <b>bảo vật quốc gia</b>.'],
+  ['⚓','Khu di tích lịch sử Bạch Đằng Giang (Thuỷ Nguyên)','Gắn với chiến thắng trên sông Bạch Đằng','dt','được xếp hạng di tích quốc gia, gắn với Ngô Quyền, Lê Đại Hành, Trần Hưng Đạo → <b>di tích lịch sử – văn hoá</b>.'],
+  ['💎','Bộ kim phẩm Đền Nghè (Hải Phòng)','16 hiện vật bằng vàng','bv','được công nhận Bảo vật quốc gia năm 2024 → <b>di vật, cổ vật, bảo vật quốc gia</b>.'],
+  ['🦇','Vườn quốc gia Phong Nha – Kẻ Bàng','Hệ thống hang động đá vôi','dl','là cảnh quan thiên nhiên kì vĩ → <b>danh lam thắng cảnh</b>.'],
+  ['⛩️','Đền Kiếp Bạc (Hải Phòng)','Thờ Hưng Đạo Đại vương Trần Quốc Tuấn','dt','gắn với nhân vật lịch sử → <b>di tích lịch sử – văn hoá</b>.'],
+  ['🏺','Thạp đồng Đào Thịnh','Hiện vật bằng đồng thời Đông Sơn','bv','là hiện vật quý hiếm → <b>bảo vật quốc gia</b>.']];
+  let i=0,s=0,done=false;
+  function load(){done=false;const t=T[i];$('ty-e').textContent=t[0];$('ty-n').textContent=t[1];$('ty-d').textContent=t[2];msg('ty-f','');prog('ty',i,T.length,s);clearOpts('#ty-o .opt')}
+  $$('#ty-o .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const t=T[i],ok=b.dataset.k===t[3];if(ok){s++;sfx.ok()}else sfx.bad();markOpts('#ty-o .opt',t[3],b);
+    msg('ty-f',(ok?'✅ ':'💭 ')+`${t[1]} ${t[4]}`,ok?'ok':'warn');prog('ty',i+1,T.length,s)});
+  $('ty-nx').onclick=()=>{if(!done){msg('ty-f','Em chọn một loại trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=6;msg('ty-f',p?'🎉 Em phân loại đúng '+s+'/8 di sản!':'Em đúng '+s+'/8. Cần 6/8 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('type');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__ty={get k(){return T[i][3]}};load()})();
+
+/* ---------- R2 DU HÀNH HẢI PHÒNG ---------- */
+(function(){const T=[{e:'🏝️',n:'Vịnh Hạ Long – Quần đảo Cát Bà',i:'Ngày 16/9/2023, UNESCO công nhận Vịnh Hạ Long – Quần đảo Cát Bà là <b>Di sản thiên nhiên thế giới</b>. Đây là di sản liên tỉnh đầu tiên của Việt Nam, thuộc Quảng Ninh và Hải Phòng.',q:'UNESCO công nhận Vịnh Hạ Long – Quần đảo Cát Bà là:',o:['Di sản thiên nhiên thế giới','Di sản văn hoá phi vật thể','Bảo vật quốc gia']},
+  {e:'⛩️',n:'Côn Sơn – Kiếp Bạc',i:'Ngày 12/7/2025, <b>Quần thể di tích và danh thắng Yên Tử – Vĩnh Nghiêm – Côn Sơn, Kiếp Bạc</b> được UNESCO công nhận là Di sản văn hoá thế giới. Trên địa bàn Hải Phòng có chùa Côn Sơn, đền Kiếp Bạc, chùa Thanh Mai, động Kính Chủ, chùa Nhẫm Dương.',q:'Di tích nào thuộc quần thể này và nằm ở Hải Phòng?',o:['Đền Kiếp Bạc','Hoàng thành Thăng Long','Phố cổ Hội An']},
+  {e:'🐃',n:'Lễ hội chọi trâu Đồ Sơn',i:'Lễ hội của cư dân vùng biển Đồ Sơn, diễn ra ngày 9 tháng 8 âm lịch hằng năm. Năm 2012, lễ hội được công nhận là <b>Di sản văn hoá phi vật thể quốc gia</b>.',q:'Lễ hội chọi trâu Đồ Sơn thuộc loại di sản nào?',o:['Di sản văn hoá phi vật thể','Danh lam thắng cảnh','Di vật, cổ vật']},
+  {e:'⚓',n:'Bạch Đằng Giang (Thuỷ Nguyên)',i:'Khu di tích lịch sử Bạch Đằng Giang nằm trong quần thể danh thắng Tràng Kênh, gắn với những chiến thắng trên sông Bạch Đằng của Ngô Quyền, Lê Đại Hành, Trần Hưng Đạo; được xếp hạng <b>di tích quốc gia</b> (đón bằng ngày 2/1/2021).',q:'Khu di tích Bạch Đằng Giang có ý nghĩa gì?',o:['Nhắc nhớ truyền thống dựng nước và giữ nước của dân tộc','Chỉ là nơi để chụp ảnh check-in','Không còn giá trị vì đã quá lâu']},
+  {e:'💎',n:'Đền Nghè (phường An Biên)',i:'Đền Nghè thờ <b>nữ tướng Lê Chân</b>, người khai hoang, lập nên ấp An Biên xưa (Hải Phòng ngày nay). Năm 2024, bộ kim phẩm Đền Nghè gồm 16 hiện vật bằng vàng được công nhận là <b>Bảo vật quốc gia</b>.',q:'Đền Nghè thờ ai?',o:['Nữ tướng Lê Chân','Hai Bà Trưng','Bà Triệu']}];
+  const got=new Set();let cur=-1,done=false;
+  function stops(){$('hp-stops').innerHTML=T.map((t,k)=>`<button class="stop${k===cur?' on':''}${got.has(k)?' done':''}" data-k="${k}"><span class="e">${t.e}</span>${t.n}</button>`).join('');$$('#hp-stops .stop').forEach(b=>b.onclick=()=>open(+b.dataset.k));
+    $('hp-pass').innerHTML=T.map((t,k)=>`<span class="stamp${got.has(k)?' got':''}" title="${t.n}">${t.e}</span>`).join('')}
+  function open(k){cur=k;done=got.has(k);const t=T[k];sfx.tap();stops();
+    $('hp-card').innerHTML=`<h4>${t.e} ${t.n}</h4><div>${t.i}</div><div class="qbig" style="font-size:18px">❓ ${t.q}</div><div class="opts" id="hp-o">${shuffle(t.o.map((x,j)=>j)).map(j=>`<button class="opt" data-k="${j}">${t.o[j]}</button>`).join('')}</div><div id="hp-f"></div>`;
+    $$('#hp-o .opt').forEach(b=>b.onclick=()=>{if(done)return;const ok=b.dataset.k==='0';markOpts('#hp-o .opt','0',b);
+      if(ok){done=true;got.add(k);sfx.ok();msg('hp-f','✅ Chính xác! Em nhận được dấu '+t.e+' vào hộ chiếu.','ok');stops();say(got.size<T.length?'Còn '+(T.length-got.size)+' điểm đến nữa!':'Em đã đi hết hành trình di sản Hải Phòng! 🎉');if(got.size===T.length)award('map')}
+      else{sfx.bad();msg('hp-f','Chưa đúng, em đọc lại thông tin phía trên rồi chọn lại nhé.','warn');setTimeout(()=>clearOpts('#hp-o .opt'),900)}})}
+  stops();window.__hp={open,get n(){return T.length}}})();
+
+/* ---------- R3 Ý NGHĨA ---------- */
+(function(){const T=[['Di sản văn hoá là tài sản của dân tộc, thể hiện công lao của cha ông trong dựng nước và giữ nước.',1,'Di sản giúp các thế hệ sau hiểu về cội nguồn, truyền thống của dân tộc.'],
+  ['Di sản chỉ là đồ cũ, không liên quan gì đến cuộc sống hiện đại.',0,'Di sản vẫn có giá trị với hôm nay: giáo dục, bồi đắp tình yêu quê hương, phát triển du lịch, giao lưu văn hoá.'],
+  ['Di sản văn hoá giúp phát triển du lịch, tạo việc làm cho người dân địa phương.',1,'Ví dụ: du khách đến Cát Bà, Đồ Sơn, Côn Sơn – Kiếp Bạc giúp kinh tế địa phương phát triển.'],
+  ['Chỉ những di sản được UNESCO công nhận mới cần bảo vệ.',0,'Mọi di sản văn hoá, dù lớn hay nhỏ, ở địa phương hay quốc gia, đều cần được bảo vệ.'],
+  ['Tìm hiểu di sản quê hương giúp em thêm yêu và tự hào về nơi mình sinh sống.',1,'Hiểu về di sản là bước đầu để biết trân trọng và gìn giữ.'],
+  ['Bảo vệ di sản là việc của Nhà nước, học sinh không cần quan tâm.',0,'Mọi tổ chức, cá nhân, kể cả học sinh, đều có trách nhiệm tôn trọng và bảo vệ di sản.']];
+  let i=0,s=0,done=false;
+  function load(){done=false;$('va-q').textContent='“'+T[i][0]+'”';msg('va-f','');prog('va',i,T.length,s);clearOpts('#v-r3 .yn .opt')}
+  $$('#v-r3 .yn .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=+b.dataset.k===T[i][1];if(ok){s++;sfx.ok()}else sfx.bad();markOpts('#v-r3 .yn .opt',String(T[i][1]),b);
+    msg('va-f',(ok?'✅ ':'💭 ')+(T[i][1]?'Nên <b>đồng tình</b>. ':'Không nên đồng tình. ')+T[i][2],ok?'ok':'warn');prog('va',i+1,T.length,s)});
+  $('va-nx').onclick=()=>{if(!done){msg('va-f','Em chọn ý kiến của mình trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=5;msg('va-f',p?'🎉 Em đúng '+s+'/6 ý kiến!':'Em đúng '+s+'/6. Cần 5/6 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('value');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__va={get k(){return T[i][1]}};load()})();
+
+/* ---------- R4a THÁM TỬ PHÁP LUẬT ---------- */
+(function(){const T=[['🗿','Bạn Nam khắc tên mình lên cột đá ở di tích để làm kỉ niệm.',0,'Đây là hành vi xâm hại di tích, bị pháp luật nghiêm cấm.'],
+  ['🏺','Khi đào móng nhà, gia đình bác Ba phát hiện một chiếc bình cổ và báo ngay cho chính quyền địa phương.',1,'Thông báo kịp thời khi phát hiện di vật, cổ vật là nghĩa vụ của công dân.'],
+  ['🏪','Một người lấn chiếm đất của khu di tích để dựng quán bán hàng.',0,'Lấn chiếm đất thuộc di tích là hành vi bị nghiêm cấm.'],
+  ['📸','Nhóm học sinh tham quan, tìm hiểu và viết bài giới thiệu di tích trên trang của lớp.',1,'Tham quan, nghiên cứu di sản là quyền của công dân; giới thiệu di sản góp phần phát huy giá trị.'],
+  ['🚢','Ông K mua cổ vật không rõ nguồn gốc rồi tìm cách đưa ra nước ngoài bán.',0,'Mua bán, vận chuyển trái phép di vật, cổ vật, đưa trái phép ra nước ngoài là hành vi bị nghiêm cấm.'],
+  ['🧹','Bạn Hoa nhặt rác và nhắc các bạn không ngồi lên hiện vật khi tham quan bảo tàng.',1,'Đây là việc làm thể hiện sự tôn trọng, bảo vệ di sản.'],
+  ['🔮','Một người lợi dụng lễ hội để hành nghề bói toán, mê tín dị đoan kiếm tiền.',0,'Lợi dụng di sản, lễ hội để trục lợi, hoạt động mê tín dị đoan là hành vi bị nghiêm cấm.'],
+  ['🎤','Lớp 7C8 tìm hiểu và tập một làn điệu dân ca của quê hương để biểu diễn văn nghệ.',1,'Học tập, trình diễn dân ca là cách gìn giữ và phát huy di sản phi vật thể.']];
+  let i=0,s=0,done=false;
+  function load(){done=false;$('lw-e').textContent=T[i][0];$('lw-q').textContent=T[i][1];msg('lw-f','');prog('lw',i,T.length,s);clearOpts('#v-r4 .yn .opt')}
+  $$('#v-r4 .yn .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=+b.dataset.k===T[i][2];if(ok){s++;sfx.ok()}else sfx.bad();markOpts('#v-r4 .yn .opt',String(T[i][2]),b);
+    msg('lw-f',(ok?'✅ ':'💭 ')+(T[i][2]?'<b>Đúng quy định.</b> ':'<b>Vi phạm.</b> ')+T[i][3],ok?'ok':'warn');prog('lw',i+1,T.length,s)});
+  $('lw-nx').onclick=()=>{if(!done){msg('lw-f','Em chọn một đáp án trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=7;msg('lw-f',p?'🎉 Em nhận định đúng '+s+'/8 tình huống!':'Em đúng '+s+'/8. Cần 7/8 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('law');else{i=0;s=0;setTimeout(load,1800)}}};
+  window.__lw={get k(){return T[i][2]}};load()})();
+
+/* ---------- R4b EM SẼ LÀM GÌ ---------- */
+(function(){const T=[{e:'✏️',q:'Đi tham quan di tích, em thấy một bạn định lấy bút viết lên tường.',o:['Nhắc bạn dừng lại và giải thích đó là hành vi xâm hại di tích','Mặc kệ vì không phải việc của mình','Viết cùng bạn cho vui'],w:'Nhắc nhở, giải thích nhẹ nhàng giúp bạn hiểu và bảo vệ được di tích.'},
+  {e:'🌙',q:'Em thấy người lạ đào bới ở khu vực di tích vào buổi tối.',o:['Báo ngay cho bố mẹ, thầy cô hoặc chính quyền địa phương, không tự xử lí','Tự đến ngăn cản bằng mọi cách','Quay video đăng lên mạng để câu lượt thích'],w:'Báo người lớn và cơ quan có thẩm quyền là cách an toàn, đúng pháp luật; học sinh không nên tự xử lí.'},
+  {e:'🧹',q:'Đoàn trường tổ chức dọn vệ sinh tại một di tích gần trường vào cuối tuần.',o:['Tích cực tham gia và rủ thêm bạn bè','Viện lí do để không tham gia','Đến cho có mặt rồi về sớm'],w:'Tham gia hoạt động do trường, địa phương tổ chức là việc làm phù hợp lứa tuổi.'},
+  {e:'📱',q:'Em muốn giới thiệu một di sản quê hương với bạn bè trên mạng.',o:['Tìm hiểu kĩ, dùng thông tin chính xác, ghi rõ nguồn','Bịa thêm chuyện li kì cho hấp dẫn','Sao chép bài của người khác, không ghi nguồn'],w:'Giới thiệu di sản cần trung thực, chính xác và tôn trọng tác giả của thông tin.'}];
+  let i=0,s=0,done=false;
+  function load(){done=false;const t=T[i];$('ac-e').textContent=t.e;$('ac-q').textContent=t.q;msg('ac-f','');prog('ac',i,T.length,s);
+    $('ac-o').innerHTML=shuffle(t.o.map((x,j)=>j)).map(j=>`<button class="opt" data-k="${j}">${t.o[j]}</button>`).join('');
+    $$('#ac-o .opt').forEach(b=>b.onclick=()=>{if(done)return;done=true;const ok=b.dataset.k==='0';if(ok){s++;sfx.ok()}else sfx.bad();markOpts('#ac-o .opt','0',b);msg('ac-f',(ok?'✅ ':'💭 ')+t.w,ok?'ok':'warn');prog('ac',i+1,T.length,s)})}
+  $('ac-nx').onclick=()=>{if(!done){msg('ac-f','Em chọn cách ứng xử trước nhé!','info');return}
+    if(i<T.length-1){i++;load()}else{const p=s>=3;msg('ac-f',p?'🎉 Em ứng xử đúng '+s+'/4 tình huống!':'Em đúng '+s+'/4. Cần 3/4 để nhận huy hiệu, làm lại nhé!',p?'ok':'warn');if(p)award('act');else{i=0;s=0;setTimeout(load,1800)}}};
+  load()})();
+
+/* ---------- R5 THẺ ĐẠI SỨ ---------- */
+(function(){const P=['Tìm hiểu và giới thiệu với bạn bè, người thân về một di sản của quê hương.','Giữ gìn vệ sinh, không viết, vẽ, khắc lên di tích khi đi tham quan.','Không chạm, ngồi, trèo lên hiện vật khi chưa được phép.','Nhắc nhở bạn bè cùng thực hiện đúng nội quy tại di tích, bảo tàng.',
+  'Báo cho người lớn, thầy cô hoặc chính quyền khi thấy hành vi xâm hại di sản.','Học hát một làn điệu dân ca hoặc tìm hiểu một lễ hội truyền thống.','Tham gia dọn vệ sinh, chăm sóc di tích do trường, địa phương tổ chức.','Chia sẻ thông tin chính xác về di sản trên mạng, không lan truyền tin sai.'];
+  $('pg-list').innerHTML=P.map((t,k)=>`<label><input type="checkbox" value="${k}"><span>${t}</span></label>`).join('');
+  $('pg-name').value=ST.name||'';
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  $('pg-go').onclick=()=>{const ch=$$('#pg-list input:checked').map(x=>P[+x.value]),own=$('pg-own').value.trim();if(own)ch.push(own);
+    if(ch.length<3){msg('pg-f','Em chọn ít nhất 3 việc nhé (có thể tính cả việc em tự viết).','info');return}
+    const nm=$('pg-name').value.trim();if(nm){ST.name=nm;saveST()}msg('pg-f','');
+    $('pg-card').innerHTML=`<div class="amb"><small>BẢO TÀNG DI SẢN SỐ · GDCD 7</small><h4>THẺ ĐẠI SỨ DI SẢN</h4><div class="nm">${esc(nm||'Đại sứ nhí')}</div><div>Em cam kết:</div><ul>${ch.map(t=>'<li>'+esc(t)+'</li>').join('')}</ul><small>Ngày ${new Date().toLocaleDateString('vi-VN')} · 📸 Chụp thẻ gửi thầy cô nhé!</small></div>`;
+    sfx.ok();award('pledge');say('Cảm ơn Đại sứ nhí! Di sản cần những người như em 🏮');$('pg-card').scrollIntoView({behavior:'smooth',block:'nearest'})}})();
+
+L.onEnter=v=>{if(v==='r5'&&!$('pg-name').value)$('pg-name').value=ST.name||''};
+
+boot();
+</script>
+<!-- ===== TRỢ GIẢNG AI – BẢO TÀNG DI SẢN SỐ (dán ngay TRƯỚC thẻ </body> trong index.html) ===== -->
+<style>
+#tgai-btn{position:fixed;right:18px;bottom:18px;z-index:99999;display:flex;align-items:center;gap:8px;padding:12px 18px;border:none;border-radius:999px;background:linear-gradient(135deg,#2dd4bf,#0ea5e9);color:#04221f;font:700 15px/1 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer;box-shadow:0 8px 24px rgba(45,212,191,.35)}
+#tgai-btn:hover{transform:translateY(-2px)}
+#tgai-box{position:fixed;right:18px;bottom:78px;z-index:99999;width:370px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100vh - 110px);display:none;flex-direction:column;background:#0b1f24;border:1px solid #1f4a4f;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.5);font-family:'Be Vietnam Pro',system-ui,sans-serif;color:#e6fffb;overflow:hidden}
+#tgai-box.open{display:flex}
+#tgai-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:#0f2c32;border-bottom:1px solid #1f4a4f}
+#tgai-head b{font-size:15px}
+#tgai-head small{display:block;font-size:12px;color:#8fbfba;font-weight:400}
+#tgai-x{background:none;border:none;color:#8fbfba;font-size:22px;cursor:pointer}
+#tgai-log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.tgai-b{padding:9px 12px;border-radius:14px;font-size:14px;line-height:1.5;max-width:88%;white-space:pre-wrap}
+.tgai-a{align-self:flex-start;background:#133a40;border-bottom-left-radius:4px}
+.tgai-u{align-self:flex-end;background:#2dd4bf;color:#04221f;border-bottom-right-radius:4px}
+#tgai-chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 12px 8px}
+.tgai-c{border:1px solid #1f4a4f;background:transparent;color:#bdf5ec;border-radius:999px;padding:5px 10px;font:13px 'Be Vietnam Pro',system-ui,sans-serif;cursor:pointer}
+#tgai-f{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #1f4a4f}
+#tgai-q{flex:1;min-width:0;background:#0f2c32;border:1px solid #1f4a4f;border-radius:12px;padding:10px;color:#e6fffb;font:15px 'Be Vietnam Pro',system-ui,sans-serif}
+#tgai-send{border:none;border-radius:12px;padding:0 14px;background:#2dd4bf;color:#04221f;font-weight:700;cursor:pointer}
+#tgai-rule{font-size:11.5px;color:#8fbfba;padding:0 12px 10px}
+@media(max-width:600px){#tgai-btn .tgai-t{display:none}#tgai-btn{padding:14px;font-size:22px}}
+/* Khi trang được nhúng (Google Site): nút thành thanh ở đầu trang, khung chat mở ngay bên dưới */
+.tgai-embed #tgai-btn{position:relative;right:auto;bottom:auto;width:calc(100% - 24px);margin:10px 12px 0;justify-content:center;padding:12px 18px;font-size:15px}
+.tgai-embed #tgai-btn .tgai-t{display:inline}
+.tgai-embed #tgai-box{position:absolute;top:66px;bottom:auto;right:12px;height:500px;max-height:none}
+</style>
+
+<button id="tgai-btn" aria-label="Mở trợ giảng AI">🤖<span class="tgai-t"> Hỏi trợ giảng AI</span></button>
+<div id="tgai-box" role="dialog" aria-label="Trợ giảng AI">
+  <div id="tgai-head"><div><b>🤖 Trợ giảng AI</b><small>GDCD 7 · Bài 5: Bảo tồn di sản văn hoá</small></div><button id="tgai-x" aria-label="Đóng">×</button></div>
+  <div id="tgai-log"><div class="tgai-b tgai-a">Chào em! Mình là trợ giảng AI của Bảo tàng Di sản số. Em muốn tìm hiểu di sản nào? Mình sẽ gợi ý để em tự khám phá nhé 😊</div></div>
+  <div id="tgai-chips">
+    <button class="tgai-c">Di sản vật thể và phi vật thể khác nhau thế nào?</button>
+    <button class="tgai-c">Hải Phòng có những di sản nào?</button>
+    <button class="tgai-c">Gợi ý cho câu em đang làm</button>
+  </div>
+  <div id="tgai-f"><input id="tgai-q" maxlength="300" placeholder="Nhập câu hỏi của em…"><button id="tgai-send">Gửi</button></div>
+  <div id="tgai-rule">🛡️ Hỏi để hiểu, không hỏi để chép · Không ghi thông tin cá nhân · AI có thể sai, hãy kiểm tra với SGK và thầy cô.</div>
+</div>
+
+<script>
+(function(){
+  // Đang nằm trong khung nhúng (Google Site)? -> đưa nút lên đầu trang để luôn nhìn thấy
+  var inFrame=false;try{inFrame=window.self!==window.top}catch(e){inFrame=true}
+  if(inFrame){document.documentElement.classList.add('tgai-embed');var bt=document.getElementById('tgai-btn');document.body.insertBefore(bt,document.body.firstChild);document.body.style.position='relative';document.body.appendChild(document.getElementById('tgai-box'))}
+  var box=document.getElementById('tgai-box'),log=document.getElementById('tgai-log'),inp=document.getElementById('tgai-q'),hist=[],busy=false;
+  document.getElementById('tgai-btn').onclick=function(){box.classList.toggle('open');if(box.classList.contains('open'))inp.focus()};
+  document.getElementById('tgai-x').onclick=function(){box.classList.remove('open')};
+  function add(t,who){var d=document.createElement('div');d.className='tgai-b '+who;d.textContent=t;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+  function where(){
+    var v=[].slice.call(document.querySelectorAll('.view')).find(function(e){return !e.hidden}),t=v?v.innerText.replace(/\s+/g,' ').slice(0,320):'';
+    return 'Học sinh đang dùng học liệu "Bảo tàng Di sản số" (Giáo dục công dân 7, Bài 5: Bảo tồn di sản văn hoá). Phần đang xem: "'+t+'". KHÔNG nói ra đáp án của câu đang làm, chỉ gợi ý cách nghĩ.';
+  }
+  async function ask(text){
+    var q=(text||inp.value).trim(); if(!q||busy)return; inp.value=''; busy=true;
+    add(q,'tgai-u'); var w=add('Trợ giảng đang suy nghĩ…','tgai-a');
+    try{
+      var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,context:where(),history:hist.slice(-6)})});
+      var j=await r.json(); if(!r.ok||!j.reply)throw 0;
+      w.textContent=j.reply; hist.push({role:'user',text:q},{role:'ai',text:j.reply});
+    }catch(e){w.textContent='Trợ giảng AI đang tạm nghỉ. Em thử lại sau hoặc hỏi thầy cô nhé!'}
+    busy=false;
+  }
+  document.getElementById('tgai-send').onclick=function(){ask()};
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')ask()});
+  document.querySelectorAll('.tgai-c').forEach(function(b){b.onclick=function(){ask(b.textContent)}});
+})();
+</script>
+<!-- ===== HẾT ĐOẠN TRỢ GIẢNG AI ===== -->
+
+<!-- Vercel Web Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
