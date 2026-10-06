@@ -105,6 +105,7 @@ footer{text-align:center;color:var(--dim);font-size:13px;padding:6px 16px 30px}
 @media(max-width:820px){.hero,.grid2{grid-template-columns:1fr}}
 @media(max-width:600px){.app{padding:14px 12px}.rooms button{padding:7px 11px;font-size:13px}.panel{padding:14px}.logo{flex-basis:56px;height:56px}.swipe{display:block}.hscroll svg{min-width:640px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.qstage{margin-bottom:14px}
 
 .qbig{font:800 21px/1.4 'Lexend',sans-serif;margin:10px 0}
 .exhibit{display:flex;gap:16px;align-items:center;justify-content:center;background:linear-gradient(135deg,#fff,#fbefd8);border:2px solid var(--line);border-radius:20px;padding:18px;margin:12px 0;min-height:130px}
@@ -141,6 +142,33 @@ footer{text-align:center;color:var(--dim);font-size:13px;padding:6px 16px 30px}
 .amb ul{margin:8px 0 0;padding-left:20px}.amb li{margin:3px 0}
 .amb small{opacity:.8}
 .textin{width:100%;font:600 16px 'Be Vietnam Pro',sans-serif;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+
+.gallery{margin-top:24px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.gwall{background:linear-gradient(#5c1a1b,#7a2326);padding:30px 20px 26px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 18px}
+.gfloor{height:26px;background:repeating-linear-gradient(90deg,#8a5a2b 0 60px,#7a4e24 60px 120px)}
+.frame{position:relative;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;font:inherit;color:#ffe7a3}
+.frame .spot{position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:140px;height:80px;background:radial-gradient(ellipse at top,rgba(255,236,170,.0),transparent 70%);transition:.3s;pointer-events:none}
+.frame.lit .spot{background:radial-gradient(ellipse at top,rgba(255,236,170,.55),transparent 70%)}
+.canvas{width:140px;height:150px;border:12px solid transparent;border-image:linear-gradient(135deg,#f6d27a,#a8741a,#f6d27a) 1;background:radial-gradient(circle,#fff8e6,#f0dcb2);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.45);transition:transform .15s}
+.frame:hover .canvas{transform:translateY(-4px)}.frame .art{font-size:58px;filter:grayscale(.7);opacity:.7}.frame.lit .art{filter:none;opacity:1}
+.plaque{background:linear-gradient(#e9cf8d,#c9a14f);color:#3a1c12;border-radius:4px;padding:6px 10px;text-align:center;min-width:150px;box-shadow:0 3px 6px rgba(0,0,0,.35)}
+.plaque small{display:block;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.15em}.plaque b{display:block;font:800 14.5px 'Lexend',sans-serif;line-height:1.3}.plaque em{font-style:normal;font-size:12px}
+.rooms button{border-radius:2px;border-color:#d8b46a}.rooms button.on{background:#a4161a;border-color:#a4161a;color:#ffe7a3}
+.cases{border-radius:18px;padding:14px;background:linear-gradient(#5c1a1b,#3a1012);color:#ffe7a3;text-align:center}.cases.win{background:linear-gradient(#7a5600,#3a1012)}
+.ch{font:800 14px 'JetBrains Mono',monospace;letter-spacing:.08em}
+.crow{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.crow span{width:54px;height:62px;border-radius:6px 6px 2px 2px;background:linear-gradient(rgba(255,255,255,.18),rgba(255,255,255,.05));border:2px solid rgba(255,231,163,.5);display:flex;align-items:center;justify-content:center;font-size:28px;color:rgba(255,231,163,.5)}
+.crow span.ok{border-color:#ffd770;box-shadow:0 0 14px rgba(255,215,112,.5);animation:pp .5s}.crow span.bad{border-color:#f87171}.crow span.cur{border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.3)}
+.ct2{font:600 14px 'Be Vietnam Pro',sans-serif}
+.ticket{display:flex;max-width:760px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(58,28,18,.3);color:#3a1c12}
+.tk-main{flex:1;padding:22px 20px;text-align:center;background:radial-gradient(circle at 50% 0,#fffaf0,#f6e3bd)}
+.tk-top{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.18em;color:#a4161a}
+.ticket h2{font:900 30px 'Playfair Display',Georgia,serif;margin:6px 0}.ticket .ct{font:900 22px 'Playfair Display',Georgia,serif;color:#a4161a}
+.ticket .who{font:900 28px 'Be Vietnam Pro',sans-serif;border-bottom:2px dashed #b98300;display:inline-block;min-width:220px;padding:0 12px;margin:6px 0}
+.tk-stub{width:150px;background:linear-gradient(#a4161a,#6b0d10);color:#ffe7a3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-left:4px dashed #f8efdf;text-align:center;padding:14px 8px}
+.tk-stub span{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.15em}.tk-stub b{font:900 18px 'Playfair Display',serif}.tk-seal{font-size:34px}
+.ticket input{font:700 16px 'Be Vietnam Pro',sans-serif;padding:8px 12px;border:2px solid #e8cfa9;border-radius:10px;background:#fff}
+@media(max-width:600px){.gwall{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 10px;padding:26px 10px}.canvas{width:110px;height:120px}.plaque{min-width:0;width:100%}.frame .art{font-size:46px}.ticket{flex-direction:column}.tk-stub{width:auto;border-left:none;border-top:4px dashed #f8efdf;flex-direction:row;flex-wrap:wrap}}
 
 </style>
 </head>
@@ -318,7 +346,7 @@ function saveST(){try{localStorage.setItem(L.key,JSON.stringify(ST))}catch(e){}}
 function award(k){if(ST.b[k])return false;ST.b[k]=1;saveST();sfx.win();confetti(110);toast('🏅 Huy hiệu mới: '+L.badges[k]);counts();return true}
 function counts(){const n=Object.keys(L.badges).filter(k=>ST.b[k]).length;$('bc').textContent=n;$('bt').textContent=Object.keys(L.badges).length;
   $$('.bpill').forEach(p=>{const k=p.dataset.badge;p.classList.toggle('got',!!ST.b[k]);p.textContent=(ST.b[k]?'🏅 ':'○ ')+L.badges[k]});
-  $$('#hubRooms .room').forEach(b=>{const r=L.rooms.find(x=>x[0]===b.dataset.go);b.querySelector('.st').textContent='★ '+r[5].filter(k=>ST.b[k]).length+'/'+r[5].length})}
+  $$('#hubRooms .room').forEach(b=>{const r=L.rooms.find(x=>x[0]===b.dataset.go);b.querySelector('.st').textContent='★ '+r[5].filter(k=>ST.b[k]).length+'/'+r[5].length});if(L.renderHub)L.renderHub()}
 function say(t){const v=$$('.view').find(x=>!x.hidden);const s=v&&v.querySelector('.say');if(s)s.innerHTML='<b>'+L.coach+':</b> '+t}
 function msg(id,t,cls){$(id).innerHTML=t?`<div class="msg ${cls||'info'}">${t}</div>`:''}
 function prog(p,i,n,s){$(p+'-p').style.width=(i/n*100)+'%';$(p+'-c').textContent='Câu '+Math.min(i+1,n)+'/'+n+' · Đúng ngay lần đầu: '+s}
@@ -338,6 +366,9 @@ function qIntro(){clearInterval(qt);$('quiz').innerHTML=`<div class="panel" styl
 function qRender(){clearInterval(qt);const el=$('quiz');
   if(qi>=QS.length){const pass=qs>=L.quizPass;if(pass)award('quiz');
     const n=Object.keys(L.badges).filter(k=>ST.b[k]).length,N=Object.keys(L.badges).length;
+    const ctx={name:ST.name||'. . . . . . . .',qs,n:QS.length,b:n,B:N,date:new Date().toLocaleDateString('vi-VN'),nameIn:`<input id="cName" maxlength="40" placeholder="Sửa tên của em" value="${(ST.name||'').replace(/"/g,'&quot;')}">`};
+    if(pass&&L.cert){el.innerHTML=L.cert(ctx)+'<div class="row center"><button class="btn ghost" id="qAgain">↻ Làm lại thử thách</button></div>';confetti(160);
+      $('cName').oninput=e=>{ST.name=e.target.value.trim();saveST();$('certWho').textContent=ST.name||'. . . . . . . .'};$('qAgain').onclick=()=>{QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()};return}
     el.innerHTML=pass?`<div class="cert"><div class="m">${L.certTop}</div><h2>GIẤY CHỨNG NHẬN</h2><div class="ct">${L.certTitle}</div><div style="margin-top:10px">Trao cho</div>
       <div class="who" id="certWho">${ST.name||'. . . . . . . .'}</div><div>đã hoàn thành ${L.certWhat} với <b>${qs}/${QS.length}</b> câu đúng và đạt <b>${n}/${N}</b> huy hiệu.</div>
       <div class="small" style="margin-top:6px;opacity:.8">Ngày ${new Date().toLocaleDateString('vi-VN')} · GV hướng dẫn: Ngô Thị Phương – Trường THCS Võ Thị Sáu, Hải Phòng</div>
@@ -347,21 +378,22 @@ function qRender(){clearInterval(qt);const el=$('quiz');
     if(pass){confetti(160);$('cName').oninput=e=>{ST.name=e.target.value.trim();saveST();$('certWho').textContent=ST.name||'. . . . . . . .'}}
     $('qAgain').onclick=()=>{QS=L.quiz.map(q=>({...q,ord:shuffle(q.o.map((t,i)=>i))}));qi=0;qs=0;qRender()};return}
   const q=QS[qi];tl=30;qLock=false;
-  el.innerHTML=`<div class="panel"><div class="qtop"><span>Câu ${qi+1}/${QS.length}</span><span>Đúng: ${qs}</span><span id="qTime">⏱ 30 giây</span></div><div class="qbar"><i id="qBar" style="width:100%"></i></div>
+  el.innerHTML=(L.qStage?'<div id="qStage" class="qstage"></div>':'')+`<div class="panel"><div class="qtop"><span>Câu ${qi+1}/${QS.length}</span><span>Đúng: ${qs}</span><span id="qTime">⏱ 30 giây</span></div><div class="qbar"><i id="qBar" style="width:100%"></i></div>
     <div class="qq">${q.q}</div><div class="opts" id="qOpts">${q.ord.map(i=>`<button class="opt" data-i="${i}">${q.o[i]}</button>`).join('')}</div><div id="qFb"></div>
     <div class="row"><button class="btn main" id="qNext" hidden>Câu tiếp ➜</button></div></div>`;
   $$('#qOpts .opt').forEach(b=>b.onclick=()=>qAns(+b.dataset.i));$('qNext').onclick=()=>{qi++;qRender()};
+  if(L.qStage)L.qStage({qi,qs,n:QS.length,last:null,pass:L.quizPass});
   qt=setInterval(()=>{tl--;$('qTime').textContent='⏱ '+tl+' giây';$('qBar').style.width=(tl/30*100)+'%';if(tl<=5&&tl>0)sfx.tick();if(tl<=0)qAns(-1)},1000)}
 function qAns(i){if(qLock)return;qLock=true;clearInterval(qt);const q=QS[qi],ok=i===q.a;if(ok){qs++;sfx.ok()}else sfx.bad();
   $$('#qOpts .opt').forEach(b=>{const k=+b.dataset.i;if(k===q.a)b.classList.add('right');else if(k===i)b.classList.add('wrong');b.disabled=true});
-  msg('qFb',(i<0?'⏰ Hết giờ! ':ok?'✅ Chính xác! ':'💭 Chưa đúng. ')+(q.e||''),ok?'ok':'warn');$('qNext').hidden=false;$('qNext').textContent=qi<QS.length-1?'Câu tiếp ➜':'Xem kết quả ➜'}
+  msg('qFb',(i<0?'⏰ Hết giờ! ':ok?'✅ Chính xác! ':'💭 Chưa đúng. ')+(q.e||''),ok?'ok':'warn');$('qNext').hidden=false;$('qNext').textContent=qi<QS.length-1?'Câu tiếp ➜':'Xem kết quả ➜';if(L.qStage)L.qStage({qi,qs,n:QS.length,last:ok,pass:L.quizPass})}
 
 /* khởi động */
 function boot(){loadST();
   $('snd').textContent=soundOn?'🔊':'🔇';$('snd').onclick=()=>{soundOn=!soundOn;$('snd').textContent=soundOn?'🔊':'🔇';try{localStorage.setItem('vts-snd',soundOn?'1':'0')}catch(e){}};
   $('nav').innerHTML=[['hub','00','Phòng chờ'],...L.rooms.map(r=>[r[0],r[3],r[1]]),['info','ⓘ','Thông tin học liệu']].map(r=>`<button data-go="${r[0]}"><span class="n">${r[1]}</span>${r[2]}</button>`).join('');
   $$('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.go));
-  $('hubRooms').innerHTML=L.rooms.map(r=>`<button class="panel room" data-go="${r[0]}"><span class="t"><small>${r[3]}</small><b>${r[4]}</b></span><span><h3>${r[1]}</h3><p>${r[2]}</p><span class="st"></span></span></button>`).join('');
+  if(!L.renderHub)$('hubRooms').innerHTML=L.rooms.map(r=>`<button class="panel room" data-go="${r[0]}"><span class="t"><small>${r[3]}</small><b>${r[4]}</b></span><span><h3>${r[1]}</h3><p>${r[2]}</p><span class="st"></span></span></button>`).join('');
   $$('#hubRooms .room').forEach(b=>b.onclick=()=>go(b.dataset.go));
   L.rooms.forEach(r=>{const s=$('v-'+r[0]);if(s)s.insertAdjacentHTML('afterbegin',`<div class="rhead"><span class="chip">Phòng ${r[3]} · ${r[1]}</span><div class="coach"><span class="av">${L.avatar}</span><div class="say"></div></div></div>`)});
   $('infoT').innerHTML=L.info.map(r=>`<tr><th>${r[0]}</th><td>${r[1]}</td></tr>`).join('');
@@ -529,6 +561,23 @@ function clearOpts(sel){$$(sel).forEach(x=>x.classList.remove('right','wrong'))}
     sfx.ok();award('pledge');say('Cảm ơn Đại sứ nhí! Di sản cần những người như em 🏮');$('pg-card').scrollIntoView({behavior:'smooth',block:'nearest'})}})();
 
 L.onEnter=v=>{if(v==='r5'&&!$('pg-name').value)$('pg-name').value=ST.name||''};
+/* ====== GIAO DIỆN RIÊNG: HÀNH LANG BẢO TÀNG ====== */
+L.art={r1:'🏛️',r2:'🗺️',r3:'❤️',r4:'⚖️',r5:'🏮',r6:'🏆'};
+L.renderHub=function(){const box=$('hubRooms');box.className='gallery';
+  box.innerHTML='<div class="gwall">'+L.rooms.map((r,i)=>{const got=r[5].filter(k=>ST.b[k]).length,ok=got===r[5].length;
+    return `<button class="frame${ok?' lit':''}" data-go="${r[0]}"><span class="spot"></span><span class="canvas"><span class="art">${L.art[r[0]]}</span></span><span class="plaque"><small>GIAN ${r[3]}</small><b>${r[1]}</b><em>${ok?'✔ Đã tham quan':'Đã sưu tầm '+got+'/'+r[5].length}</em></span></button>`}).join('')+'</div><div class="gfloor"></div>';
+  $$('#hubRooms .frame').forEach(b=>b.onclick=()=>go(b.dataset.go))};
+
+/* chặng cuối: tủ kính sưu tầm */
+const QR=[],ART=['🏺','🥁','🐃','📜','🪷','🛶','🔔','🪘'];
+L.qStage=function(o){if(o.qi===0&&o.last===null)QR.length=0;if(o.last!==null)QR[o.qi]=o.last;const end=o.last!==null&&o.qi===o.n-1,win=end&&o.qs>=o.pass;
+  $('qStage').innerHTML=`<div class="cases${win?' win':''}"><div class="ch">🏛️ TỦ KÍNH SƯU TẦM · ${QR.filter(x=>x).length}/${o.n} hiện vật</div><div class="crow">${[...Array(o.n)].map((_,i)=>`<span class="${QR[i]===true?'ok':QR[i]===false?'bad':i===o.qi&&o.last===null?'cur':''}">${QR[i]===true?ART[i]:QR[i]===false?'💔':'?'}</span>`).join('')}</div>
+    <div class="ct2">${win?'Bộ sưu tập đã đủ để mở cửa triển lãm!':end?'Bộ sưu tập chưa đủ, cần ít nhất '+o.pass+' hiện vật.':'Mỗi câu đúng đưa một hiện vật vào tủ kính. Cần ít nhất '+o.pass+'/'+o.n+' hiện vật.'}</div></div>`};
+
+/* giấy chứng nhận: vé danh dự */
+L.cert=c=>`<div class="ticket"><div class="tk-main"><div class="tk-top">BẢO TÀNG DI SẢN SỐ · VÉ DANH DỰ</div><h2>GIẤY CHỨNG NHẬN</h2><div class="ct">Đại sứ di sản nhí</div><div>Trao cho</div><div class="who" id="certWho">${c.name}</div>
+  <div>đã tham quan 5 gian trưng bày, trả lời đúng <b>${c.qs}/${c.n}</b> câu và sưu tầm <b>${c.b}/${c.B}</b> huy hiệu.</div><div class="small" style="margin-top:6px">Ngày ${c.date} · GV hướng dẫn: Ngô Thị Phương – THCS Võ Thị Sáu, Hải Phòng</div>
+  <div class="row center">${c.nameIn}</div></div><div class="tk-stub"><span>VÀO CỬA</span><b>MIỄN PHÍ<br>TRỌN ĐỜI</b><span class="tk-no">Nº ${String(c.qs*11+c.b*3).padStart(4,'0')}</span><span class="tk-seal">🏮</span></div></div><div class="small" style="text-align:center;margin-top:8px">📸 Chụp màn hình gửi thầy cô nhé!</div>`;
 
 boot();
 </script>
